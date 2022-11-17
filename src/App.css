@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+* {
+  /* background-color: linear-gradient (#D97B73, #8E5849); */
+  background-color: #D97B73;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  background-image: url("/public/cardiology-header.png");
+  background-size: cover;
+  height: 10em;
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.nav-bar button {
+  margin-left: .2em;
+  margin-right: .2em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-bar button::selection {
+  background-color: aliceblue;
+  border: 2px dotted white;
+
+}
+
+.login-out {
+  padding: .5em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card-create {
+  padding: .5em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+/* CSS */
+.button-1 {
+  background-color: rgb(195, 91, 91);
+  border-radius: 8px;
+  /* border-style: ; */
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  /* list-style: none; */
+  margin-bottom: .2em;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #86444a;
 }
