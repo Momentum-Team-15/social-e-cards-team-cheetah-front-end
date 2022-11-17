@@ -1,5 +1,5 @@
 * {
-  /* background-color: linear-gradient (#D97B73, #8E5849); */
+  /* background: linear-gradient (#D97B73, #8E5849); */
   background-color: #D97B73;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -21,12 +21,6 @@ header {
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   cursor: pointer;
-}
-
-.nav-bar button::selection {
-  background-color: aliceblue;
-  border: 2px dotted white;
-
 }
 
 .login-out {
