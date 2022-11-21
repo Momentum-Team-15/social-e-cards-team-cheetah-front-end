@@ -11,13 +11,13 @@ function App() {
   <section className="App">
     {login ? ( 
       <div>
-        <NavBar />
-        <Header
+        <Header/>
+        <NavBar 
           setLogin={setLogin}/>
       </div>
     ):(
       <div>
-        <login
+        <Login
           setLogin={setLogin}/>
         </div>)}
 
