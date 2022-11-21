@@ -5,6 +5,6 @@ export const NavBar = () => {
             <button className="button-1">My Friends' Cards</button>
             <button className="button-1">Liked Cards</button>
             <button className="button-1">All Cards</button>
-      </div>
+        </div>
     )
 }
