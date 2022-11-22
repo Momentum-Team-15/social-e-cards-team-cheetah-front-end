@@ -1,11 +1,11 @@
 * {
   /* background: linear-gradient (#D97B73, #8E5849); */
-  background-color: #D97B73;
+  background-color: #d97b73;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 header {
-  background-image: url("/public/cardiology-header.png");
+  background-image: url('/public/cardiology-header.png');
   background-size: cover;
   height: 10em;
   display: flex;
@@ -16,27 +16,24 @@ header {
 }
 
 .nav-bar button {
-  margin-left: .2em;
-  margin-right: .2em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   cursor: pointer;
 }
 
 .login-out {
-  padding: .5em;
+  padding: 0.5em;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
 
 .card-create {
-  padding: .5em;
+  padding: 0.5em;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
-
-
-
 
 /* CSS */
 .button-1 {
@@ -44,7 +41,7 @@ header {
   border-radius: 8px;
   /* border-style: ; */
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -52,7 +49,7 @@ header {
   height: 40px;
   line-height: 20px;
   /* list-style: none; */
-  margin-bottom: .2em;
+  margin-bottom: 0.2em;
   outline: none;
   padding: 10px 16px;
   position: relative;
