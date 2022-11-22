@@ -1,10 +1,29 @@
-export const CardList = (props) => {
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { CardSnapshot } from './CardSnapshot'
+
+export const CardList = (token, isLoggedIn) => {
+  const [cards, setCards] = useState([])
+  const [selectedCardId, setSelectedCardId] = useState(null)
+
+//   useEffect(() => {
+//     axios
+//       .get('https://ecard-web-service.onrender.com/cards/', {
+//         headers: {
+//           // Authorization: `Token ${token}`,
+//           Authorization: "Token c312049c7f034a3d1b52eabc2040b46e094ff34c"
+//         },
+//         })
+//         .then((res) => {
+//           setCards(res.data)
+//         })
+//         }, [token])
+
     return (
         <div className="card-display">
-            {props.data.map((card) => (
+            {cards.map((card) => (
                 <div className="card-frame">
-                    <h6>Outer Message</h6>
-                    {/* need to flesh out the styles */}
+                    <h4 className="card-title">{card.title}</h4>
                 </div>
             )
             )}
