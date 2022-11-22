@@ -10,12 +10,11 @@ export const CardList = (token, isLoggedIn) => {
     axios
       .get('https://ecard-web-service.onrender.com/cards/', {
         headers: {
-          // Authorization: `Token ${token}`,
-          Authorization: 'Token c312049c7f034a3d1b52eabc2040b46e094ff34c',
+          Authorization: `Token ${token}`,
         },
       })
       .then(res => {
-        setCards(res.data)
+        setCards(res.cards)
       })
   }, [token])
 
