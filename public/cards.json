@@ -1,0 +1,47 @@
+{"cards":  [
+  {
+    "id": 1,
+    "title": "New Job",
+    "user": 1,
+    "border_style": "DOTTED",
+    "border_color": "BLUE",
+    "font_family": "CAMBRIA",
+    "font_color": "BLACK",
+    "text_alignment": "CENTER",
+    "outer_msg": "Good luck with the new job!",
+    "inner_msg": "We know you'll find one soon.",
+    "created_at": "2022-11-17T12:32:33.657292Z",
+    "updated_at": "2022-11-17T12:32:33.657327Z",
+    "published": true
+  },
+    {
+      "id": 2,
+      "title": "Merry Christmas!",
+      "user": 1,
+      "border_style": "GROOVE",
+      "border_color": "RED",
+      "font_family": "ARIAL",
+      "font_color": "RED",
+      "text_alignment": "CENTER",
+      "outer_msg": "May your season be bright...",
+      "inner_msg": "and your job prospects brighter!",
+      "created_at": "2022-11-17T12:32:33.657292Z",
+      "updated_at": "2022-11-17T12:32:33.657327Z",
+      "published": false
+    },
+    {
+      "id": 3,
+      "title": "Test2",
+      "user": 4,
+      "border_style": "DOTTED",
+      "border_color": "BLACK",
+      "font_family": "MERRIWEATHER",
+      "font_color": "BLACK",
+      "text_alignment": "RIGHT",
+      "outer_msg": "asdasdsad",
+      "inner_msg": "sasdadsasadsa",
+      "created_at": "2022-11-17T12:32:47.668606Z",
+      "updated_at": "2022-11-17T12:32:47.668642Z",
+      "published": true
+      }
+  ]}
