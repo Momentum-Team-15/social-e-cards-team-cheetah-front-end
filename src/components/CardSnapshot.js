@@ -1,4 +1,3 @@
-// import { Link } from 'react-router'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import "./card.css"
