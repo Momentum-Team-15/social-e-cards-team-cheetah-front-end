@@ -1,20 +1,39 @@
-// import { Link } from 'react-router'
+import axios from 'axios'
 import { useState, useEffect } from 'react'
+import "./card.css"
 
-export const CardSnapshot = ({ cardId, userId, setSelected }) => {
-    const [card, setCard] = useState(null)
-    
-    return (
-        // layout of card snapshot below starts with the frame that will be raised off the screen with drop shadow then the card border will be next, which attributes must have a definied null value?
-        <div className="card-frame">
-            <div className="card-snapshot">
-                <div className="card-snapshot-front">
-                    <div className="borderstyle">
-                        <h1 className="outerMessage-style">I am here.</h1>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
+export const CardSnapshot = ({ cardId, token, setSelected }) => {
+  const [card, setCard] = useState({}) 
+
+  useEffect(() => {
+    axios
+      .get(`https://ecard-web-service.onrender.com/card/${cardId}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then(res => {
+        setCard(res.card) //TODO: use actual endpoint/property
+      })
+  }, [token, cardId])
+
+  return (
+    <article className='card-frame'>
+      <div 
+        className='card-snapshot'
+        style={{background_color: card.background_color, border:`${card.border_width} ${card.border_color} ${card.border_style}`}}
+      >
+        <div className='card-front'>
+            <h2 className='outerMessage'style={{color: card.font_color}}
+            >{card.outer_msg}</h2>
+            
         </div>
-    )
+        <div className='card-back'>
+            <h2 className='innerMessage'style={{color: card.font_color}}
+            >{card.inner_msg}</h2>
+            
+        </div>
+      </div>
+    </article>
+  )
 }
