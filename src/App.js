@@ -26,7 +26,7 @@ function App() {
         <div>
           <Header />
           <NavBar />
-          <CardSnapshot />
+          <CardSnapshot cardId={3}/>
         </div>
       ) : (
         <div>
