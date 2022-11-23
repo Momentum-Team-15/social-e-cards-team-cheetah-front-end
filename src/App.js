@@ -5,7 +5,7 @@ import useLocalStorageState from 'use-local-storage-state'
 import { Header } from './components/Header'
 import { NavBar } from './components/NavBar'
 import { Login } from './components/Login'
-import { CardSnapshot } from './components/CardSnapshot'
+import { CardList } from './components/CardList'
 
 function App() {
   const [token, setToken] = useLocalStorageState('token', null)
@@ -24,9 +24,9 @@ function App() {
     <section className='App'>
       {isLoggedIn ? (
         <div>
-          <Header />
+          <Header setAuth={setAuth}/>
           <NavBar />
-          <CardSnapshot cardId={3}/>
+          <CardList />
         </div>
       ) : (
         <div>
