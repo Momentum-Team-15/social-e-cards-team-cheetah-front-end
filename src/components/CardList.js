@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { CardSnapshot } from './CardSnapshot-simple'
+import { CardSnapshot } from './CardSnapshot'
 
 export const CardList = (token, isLoggedIn) => {
   const [cards, setCards] = useState([])
