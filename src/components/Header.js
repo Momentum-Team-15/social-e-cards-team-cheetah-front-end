@@ -1,31 +1,28 @@
 import axios from 'axios'
 import useLocalStorageState from 'use-local-storage-state'
 
+export const Header = ({ setAuth }) => {
+    const [token, setToken] = useLocalStorageState('token', null)
 
+    const handleLogout = () => {
+        axios
+            .post('https://ecard-web-service.onrender.com/logout/',
+                {},
+                {
+                    headers: {
+                        Authorization: `Token ${token}`,
+                    },
+                })
+            .then(() => setAuth('', null))
+            .catch(() => setAuth('', null))
+    }
 
-
-
-export const Header = ({setAuth}) => {
-  const [token, setToken] = useLocalStorageState('token', null)
-  const handleLogout = () => {
-    axios
-    .post('https://ecard-web-service.onrender.com/logout/',
-    {},
-    { 
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    })
-    .then(() => setAuth('', null))
-    .catch(() => setAuth('', null))
-  }
-  return (
-    <header>
-      <button 
-      className='button-1'
-      onClick={handleLogout}
-      >Log Out</button>
-      <button className='button-1'>Create a Heart</button>
-    </header>
-  )
+    return (
+        <header>
+            <button
+                className='button-1'
+                onClick={handleLogout}
+            >Log Out</button>
+        </header>
+    )
 }
