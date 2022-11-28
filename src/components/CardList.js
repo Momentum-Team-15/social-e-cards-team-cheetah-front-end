@@ -14,8 +14,9 @@ export const CardList = ({token, isLoggedIn}) => {
                 },
             })
             .then(res => {
-                setCards(res.cards)
+                setCards(res.data)
             })
+            console.log(cards)
     }, [token])
 
     return (

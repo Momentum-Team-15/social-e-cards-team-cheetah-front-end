@@ -28,7 +28,6 @@ function App() {
         <section className='App'>
                 {isLoggedIn ? (
                     <>
-                    <BrowserRouter>
                         <div>
                             <Header setAuth={setAuth} />
                             <NavBar />
@@ -49,7 +48,6 @@ function App() {
                             {/* how to set :user for mycards vs other users' cards */}
                             {/* confirm endpoints then create additional components as necessary (should just be dups of the cardLlist component with props to complete endpoint) */}
                         </Routes>
-                    </BrowserRouter>
                 </>
                 ) : (
                     <>
