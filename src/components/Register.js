@@ -29,21 +29,23 @@ export const Register = () => {
                 {error && <div className="error">{error}</div>}
                 <form id="registration-form" onSubmit={handleSubmit}>
                     <div className='field'>
-                        <label htmlFor='username' className="label">Username</label>
+                        <label htmlFor='username' className="label">Create a Username</label>
                         <input
                             id='username'
                             onChange={(e) => setUsername(e.target.value)}
                             className='input'
+                            autoComplete='off'
                             type='text'
                             name='Username'
                             placeholder='Username' />
                     </div>
                     <div className='field'>
-                        <label htmlFor='password' className="label">Password</label>
+                        <label htmlFor='password' className="label">Add a Password</label>
                         <input
                             id='password'
                             onChange={(e) => setPassword(e.target.value)}
                             className='input'
+                            autoComplete='off'
                             type='password'
                             placeholder='Password' />
                     </div>

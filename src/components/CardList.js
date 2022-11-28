@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardSnapshot } from './CardSnapshot'
 
-export const CardList = (token, isLoggedIn) => {
+export const CardList = ({token, isLoggedIn}) => {
     const [cards, setCards] = useState([])
     const [selectedCardId, setSelectedCardId] = useState(null)
 
@@ -10,7 +10,7 @@ export const CardList = (token, isLoggedIn) => {
         axios
             .get('https://ecard-web-service.onrender.com/cards/', {
                 headers: {
-                    Authorization: `Token ${localStorage.token}`,
+                    Authorization: `Token ${token}`,
                 },
             })
             .then(res => {
