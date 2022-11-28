@@ -1,0 +1,19 @@
+Bad Token
+When logged in as 
+    avatar 
+    token was "db30e656984e15f94c0e6bb4ec76f8465b803580"
+    logged out
+    saw local storage username and token return to empty and null values 
+    logged back in as avatar
+    new token returned same value as before 
+    this [new token] value returns Invalid Token
+    logged out
+    saw local storage username and token return to empty and null values 
+    logged in as cwebsterg
+    token returned "3ad482e46367ba1b157ebbb999cbf193cebf2367"
+    logged out
+    logged back in as cwebsterg
+    token returned "3ad482e46367ba1b157ebbb999cbf193cebf2367"
+
+    is it possible be holding the token? thinking I am logging out of react but NOT sending correct request to destroy token. Possible?
+    
