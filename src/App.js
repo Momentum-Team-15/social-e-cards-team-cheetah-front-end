@@ -9,6 +9,8 @@ import { Register } from './components/Register'
 import { CardList } from './components/CardList'
 import { MyCardList } from './components/MyCardList'
 import { FriendsCardList } from './components/FriendsCardList'
+import { CardDetail } from './components/CardDetail'
+
 // import { LoggedOutHeader } from './components/LoggedOutHeader'
 
 function App() {
@@ -26,23 +28,32 @@ function App() {
         <BrowserRouter>
             <section className='App'>
                 {isLoggedIn ? (
+                    <>
                     <div>
                         <Header setAuth={setAuth} />
                         <NavBar />
                     </div>
+                    <div className='card-shelf'>
+                        <CardList />
+                    </div>
+                    </>
                 ) : (
                     <>
                         <header>
                         </header>
                         <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+                        <h3>Or if you are first time visitor, please register.</h3>
+                        <Register />
                     </>
 
                 )}
             </section>
             <Routes>
-                <Route path="/register" element={ <Register token={token} isLoggedIn={isLoggedIn} /> } />
+                <Route path="/register" element={ <Register /> } />
+                <Route path="/card/:cardId" element={ <CardDetail /> } />
                 <Route path="/cards" element={ <CardList token={token} isLoggedIn={isLoggedIn} /> } />
-                <Route path="/cards/me" element={ <MyCardList token={token} isLoggedIn={isLoggedIn} /> } />
+                <Route path="/cards/:card" element={ <CardList token={token} isLoggedIn={isLoggedIn} /> } />
+                <Route path="/mycards" element={ <MyCardList token={token} isLoggedIn={isLoggedIn} /> } />
                 <Route path="/cards/friendscards" element={ <FriendsCardList token={token} isLoggedIn={isLoggedIn} /> } />
                 {/* <Route path="/cards/:user" element={ <LikedCardList token={token} isLoggedIn={isLoggedIn} /> } /> */}
                 {/* how to set :user for mycards vs other users' cards */}

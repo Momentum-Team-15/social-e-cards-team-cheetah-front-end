@@ -10,7 +10,7 @@ export const CardList = (token, isLoggedIn) => {
         axios
             .get('https://ecard-web-service.onrender.com/cards/', {
                 headers: {
-                    Authorization: `Token ${token}`,
+                    Authorization: `Token ${localStorage.token}`,
                 },
             })
             .then(res => {

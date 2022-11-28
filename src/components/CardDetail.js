@@ -1,21 +1,23 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import './card.css'
+import { useParams } from 'react-router-dom'
 
-export const CardSnapshot = ({ cardId, token, setSelected }) => {
+export const CardDetail = ({ token, setSelected }) => {
     const [card, setCard] = useState({})
+    const { cardId } = useParams()
 
     useEffect(() => {
         axios
-            .get(`https://ecard-web-service.onrender.com/cards/${card.id}/`, {
+            .get(`https://ecard-web-service.onrender.com/cards/${cardId}/`, {
                 headers: {
                     Authorization: `Token ${token}`,
                 },
             })
             .then(res => {
-                setCard(res.card) //TODO: use actual endpoint/property
+                setCard(res.card)
             })
-    }, [token, cardId])
+    }, [token])
 
     return (
         <article className='lg-card-frame'>

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardSnapshot } from './CardSnapshot'
 
+// TODO: Confirm endpoint
 export const MyCardList = (token, isLoggedIn) => {
     const [cards, setCards] = useState([])
     const [selectedCardId, setSelectedCardId] = useState(null)

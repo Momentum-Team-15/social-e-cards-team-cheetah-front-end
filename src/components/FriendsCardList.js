@@ -2,9 +2,10 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardSnapshot } from './CardSnapshot'
 
+// TODO: Update endpoint for a list of all cards for followed users
 export const FriendsCardList = (token, isLoggedIn) => {
     const [cards, setCards] = useState([])
-    const [selectedCardId, setSelectedCardId] = useState(null)
+    const [selectedUserId, setSelectedUserId] = useState([])
 
     useEffect(() => {
         axios
