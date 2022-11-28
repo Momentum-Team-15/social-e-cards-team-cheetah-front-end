@@ -6,7 +6,7 @@ export const Header = ({ setAuth }) => {
 
     const handleLogout = () => {
         axios
-            .post('https://ecard-web-service.onrender.com/logout/',
+            .post('https://ecard-web-service.onrender.com/auth/token/logout/',
                 {},
                 {
                     headers: {
