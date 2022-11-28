@@ -20,9 +20,11 @@ export const MyCardList = (token, isLoggedIn) => {
     }, [token])
 
     return (
+        
         <div className='card-shelf'>
             {cards.map(card => (
                 <section>
+                    <h2>Here are our currently available cards!</h2>
                     <CardSnapshot key={card.id} card={card}/>
                 </section>
                 ))

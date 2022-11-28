@@ -34,23 +34,25 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                 {error && <div className="error">{error}</div>}
                 <form id="login-form" onSubmit={handleSubmit}>
                     <div className='field'>
-                        <label htmlFor='username' className="label">Username</label>
+                        <label htmlFor='my-username' className="label">Username</label>
                         <input
-                            id='username'
+                            id='my-username'
                             onChange={(e) => setUsername(e.target.value)}
                             className='input'
+                            autoComplete='off'
                             type='text'
-                            name='Username'
-                            placeholder='Username' />
+                            name='My Username'
+                            placeholder='My Username' />
                     </div>
                     <div className='field'>
-                        <label htmlFor='password' className="label">Password</label>
+                        <label htmlFor='my-password' className="label">Password</label>
                         <input
-                            id='password'
+                            id='my-password'
                             onChange={(e) => setPassword(e.target.value)}
                             className='input'
+                            autoComplete='off'
                             type='password'
-                            placeholder='Password' />
+                            placeholder='My Password' />
                     </div>
                     <div className='control'>
                         <button

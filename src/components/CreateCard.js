@@ -1,21 +1,20 @@
 import './App.css'
 import { useState } from 'react'
 import axios from 'axios'
-import useLocalStorageState, { LocalStorageState } from 'use-local-storage-state'
 
 
 export const CreateCard = ({ }) => {
     // TODO: title,bs,ff,ta,om,im currently required header request but should they all be there?
-    const [title, setTitle] = useLocalStorageState('title', '')
-    const [borderStyle, setBorderStyle] = useLocalStorageState('borderStyle', '')
-    const [borderColor, setBorderColor] = useLocalStorageState('borderColor', '')
-    const [fontFamily, setFontFamily] = useLocalStorageState('fontFamily', '')
-    const [fontColor, setFontColor] = useLocalStorageState('fontColor', '')
-    const [textAlignment, setTextAlignment] = useLocalStorageState('textAlignment', '')
-    const [outerMsg, setOuterMsg] = useLocalStorageState('outerMsg', '')
-    const [innerMsg, setInnerMsg] = useLocalStorageState('innerMsg', '')
-    const [updated, setUpdated] = useLocalStorageState('updated', '')
-    const [published, setPublished] = useLocalStorageState('published', false)
+    const [title, setTitle] = useState('title', '')
+    const [borderStyle, setBorderStyle] = useState('borderStyle', '')
+    const [borderColor, setBorderColor] = useState('borderColor', '')
+    const [fontFamily, setFontFamily] = useState('fontFamily', '')
+    const [fontColor, setFontColor] = useState('fontColor', '')
+    const [textAlignment, setTextAlignment] = useState('textAlignment', '')
+    const [outerMsg, setOuterMsg] = useState('outerMsg', '')
+    const [innerMsg, setInnerMsg] = useState('innerMsg', '')
+    const [updated, setUpdated] = useState('updated', '')
+    const [published, setPublished] = useState('published', false)
 
     const [error, setError] = useState(null)
 
@@ -26,7 +25,7 @@ export const CreateCard = ({ }) => {
         e.preventDefault()
         setError(null)
         axios
-            .post('https://ecard-web-service.onrender.com/auth/users/',
+            .post('https://ecard-web-service.onrender.com//',
                 {
                     title: title,
                     border_style: borderStyle,
