@@ -10,7 +10,7 @@ export const CardSnapshot = ({ key, card }) => {
             <div
                 className='card-snapshot'
                 style={{
-                    // backgroundColor: props.card.style.background_color,
+                    // backgroundColor: card.background_color,
                     border: `${card.border_style} ${card.border_color}`,
 
                 }}
