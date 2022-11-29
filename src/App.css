@@ -41,6 +41,22 @@ header {
     color: white;
 }
 
+.card-shelf {
+    margin: 1em;
+    display: flex;
+    flex: wrap;
+}
+
+.sm-card-frame {
+    box-shadow: ;
+    width: 17em;
+    height: 
+}
+
+.card-snapshot {
+    width: min-content;
+}
+
 /* CSS */
 .button-1 {
     /* background-color: rgb(195, 91, 91); */

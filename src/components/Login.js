@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { Register } from './Register'
+import { Link } from 'react-router-dom'
 
 export const Login = ({ setAuth, isLoggedIn }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [register, setRegister] = useState(false)
     const [error, setError] = useState(null)
 
     const handleSubmit = (e) => {
@@ -29,6 +32,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
 
     return (
         <div>
+            {register===false ? (
             <div className='login-box'>
                 <h3>Please log in below.</h3>
                 {error && <div className="error">{error}</div>}
@@ -59,8 +63,15 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             className='button'
                         >Login</button>
                     </div>
+                    <div id="register">
+                    <h3>Or if you are first time visitor, please
+                                <Link to="/register" onClick={()=> setRegister(!register)}> register.</Link></h3>
+                    </div>
                 </form>
             </div>
+            ) : (
+                <Register />
+            )}
         </div>
     )
 }
