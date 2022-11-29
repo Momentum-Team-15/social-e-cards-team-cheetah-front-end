@@ -3,8 +3,10 @@ import { useState } from 'react'
 
 export const Register = () => {
     const [username, setUsername] = useState ('')
+    const [email, setEmail] = useState ('')
     const [password, setPassword] = useState ('')
     const [error, setError] = useState (null)
+    const [token, setToken] = useState ('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -12,10 +14,32 @@ export const Register = () => {
         axios
             .post('https://ecard-web-service.onrender.com/auth/users/',
                 {
-                    username, password
+                    username, email, password
                 })
             .then((res) => {
                 console.log(res.data)
+            })
+            .catch((error) => {
+                setError(error.message)
+            })    
+    }
+
+    const setAuth = (username, token) => {
+        setToken(token)
+        setUsername(username)
+    }
+    console.log(username, password)
+    const handleLogin = (e) => {
+        e.preventDefault()
+        setError(null)
+        axios
+            .post('https://ecard-web-service.onrender.com/auth/token/login',
+                {
+                    username, password
+                })
+            .then((res) => {
+                const token = res.data.auth_token
+                setAuth(username, token)
             })
             .catch((error) => {
                 setError(error.message)
@@ -25,25 +49,38 @@ export const Register = () => {
     return (
         <div>
             <div className='register-box'>
-                <h4></h4>
+                <h4>Please register below.</h4>
                 {error && <div className="error">{error}</div>}
-                <form id="registration-form" onSubmit={handleSubmit}>
+                <form id="registration-form" onSubmit={()=> {handleSubmit(); handleLogin()}}>
                     <div className='field'>
-                        <label htmlFor='username' className="label">Username</label>
+                        <label htmlFor='username' className="label">Create a Username</label>
                         <input
                             id='username'
                             onChange={(e) => setUsername(e.target.value)}
                             className='input'
+                            autoComplete='on'
                             type='text'
                             name='Username'
                             placeholder='Username' />
                     </div>
                     <div className='field'>
-                        <label htmlFor='password' className="label">Password</label>
+                        <label htmlFor='email' className="label">Enter your email.</label>
+                        <input
+                            id='email'
+                            onChange={(e) => setEmail(e.target.value)}
+                            className='input'
+                            autoComplete='off'
+                            name='Email'
+                            type='email'
+                            placeholder='Email' />
+                    </div>
+                    <div className='field'>
+                        <label htmlFor='password' className="label">Add a Password</label>
                         <input
                             id='password'
                             onChange={(e) => setPassword(e.target.value)}
                             className='input'
+                            autoComplete='off'
                             type='password'
                             placeholder='Password' />
                     </div>

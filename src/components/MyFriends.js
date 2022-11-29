@@ -2,10 +2,11 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardSnapshot } from './CardSnapshot'
 
-// TODO: Confirm endpoint
-export const MyCardList = (token, isLoggedIn) => {
+// TODO: Update endpoint for a list of all followed users (where their username will then link to a list of their cards)
+
+export const MyFriends = (token, isLoggedIn) => {
     const [cards, setCards] = useState([])
-    const [selectedCardId, setSelectedCardId] = useState(null)
+    const [selectedUserId, setSelectedUserId] = useState([])
 
     useEffect(() => {
         axios
@@ -20,11 +21,9 @@ export const MyCardList = (token, isLoggedIn) => {
     }, [token])
 
     return (
-        
         <div className='card-shelf'>
             {cards.map(card => (
                 <section>
-                    <h2>Here are our currently available cards!</h2>
                     <CardSnapshot key={card.id} card={card}/>
                 </section>
                 ))
