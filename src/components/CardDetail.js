@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import './card.css'
 import { useParams } from 'react-router-dom'
 
 export const CardDetail = ({ token, setSelected }) => {
@@ -28,12 +27,12 @@ export const CardDetail = ({ token, setSelected }) => {
                     border: `${card.border_width} ${card.border_color} ${card.border_style}`,
                 }}
             >
-                <div className='detail-front'>
+                <div className='lg-card-front'>
                     <h2 className='outerMessage' style={{ color: card.font_color }}>
                         {card.outer_msg}
                     </h2>
                 </div>
-                <div className='detail-back'>
+                <div className='lg-card-back'>
                     <h2 className='innerMessage' style={{ color: card.font_color }}>
                         {card.inner_msg}
                     </h2>
