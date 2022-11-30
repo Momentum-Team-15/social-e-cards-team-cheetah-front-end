@@ -1,31 +1,34 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom"
-import './card.css'
 
-export const CardSnapshot = ({ key, card }) => {
+export const CardSnapshot = ({ card }) => {
 
     return (
         <article className='sm-card-frame'>
-            <h3>{ card.title }</h3>
+            <h4 className='card-title'>{ card.title }</h4>
             <div
                 className='card-snapshot'
                 style={{
-                    // backgroundColor: card.background_color,
-                    border: `${card.border_style} ${card.border_color}`,
+                    background: card.background_color,
+                    border: `${card.border_style} ${card.border_color}`,textAlign: card.text_alignment
 
                 }}
-            >
+                >
                 <div className='sm-card-front'>
-                    <h2 className='outerMessage' style={{ color: card.font_color }}>
+                    <p className='outerMessage' style={{ 
+                        color: card.font_color,
+                        background: card.background_color
+                    }}>
                         {card.outer_msg}
-                    </h2>
+                    </p>
                 </div>
                 <div className='sm-card-back'>
-                    <h2 className='innerMessage' style={{ color: card.font_color }}>
+                    <p className='innerMessage' style={{ color: card.font_color }}>
                         {card.inner_msg}
-                    </h2>
+                    </p>
                 </div>
             </div>
+            <div className="author">{`by ${card.user}`}</div>
         </article>
     )
 }

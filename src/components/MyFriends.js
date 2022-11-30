@@ -1,31 +1,32 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { CardSnapshot } from './CardSnapshot'
 
 // TODO: Update endpoint for a list of all followed users (where their username will then link to a list of their cards)
 
-export const MyFriends = (token, isLoggedIn) => {
-    const [cards, setCards] = useState([])
+export const MyFriends = (token) => {
+    const [friends, setFriends] = useState([])
     const [selectedUserId, setSelectedUserId] = useState([])
 
     useEffect(() => {
         axios
-            .get('https://ecard-web-service.onrender.com/cards/user', {
+            .get('https://ecard-web-service.onrender.com/friends/', {
                 headers: {
                     Authorization: `Token ${token}`,
                 },
             })
             .then(res => {
-                setCards(res.cards)
+                setFriends(res.data)
             })
+            console.log(token)
     }, [token])
 
     return (
-        <div className='card-shelf'>
-            {cards.map(card => (
-                <section>
-                    <CardSnapshot key={card.id} card={card}/>
-                </section>
+        <div className='friend-shelf'>
+            <h2>My Friends</h2>
+            {friends.map(friend => (
+                <div className='friends-list'>
+                    <p key="friend" className='friend'>{friend.friend}</p>
+                </div>
                 ))
             }
         </div>
