@@ -16,34 +16,17 @@ export const Register = () => {
                 {
                     username, email, password
                 })
-            .then((res) => {
-                console.log(res.data)
-            })
+                .then((res) => {
+                    console.log(res.data)
+                })
+                .then(axios
+                    .post('https://ecard-web-service.onrender.com/auth/token/login/',
+                        {
+                            username, password
+                        }))
             .catch((error) => {
                 setError(error.message)
             })    
-    }
-
-    const setAuth = (username, token) => {
-        setToken(token)
-        setUsername(username)
-    }
-    console.log(username, password)
-    const handleLogin = (e) => {
-        e.preventDefault()
-        setError(null)
-        axios
-            .post('https://ecard-web-service.onrender.com/auth/token/login',
-                {
-                    username, password
-                })
-            .then((res) => {
-                const token = res.data.auth_token
-                setAuth(username, token)
-            })
-            .catch((error) => {
-                setError(error.message)
-            })
     }
 
     return (
@@ -51,7 +34,7 @@ export const Register = () => {
             <div className='register-box'>
                 <h4>Please register below.</h4>
                 {error && <div className="error">{error}</div>}
-                <form id="registration-form" onSubmit={()=> {handleSubmit(); handleLogin()}}>
+                <form id="registration-form" onSubmit= {handleSubmit}>
                     <div className='field'>
                         <label htmlFor='username' className="label">Create a Username</label>
                         <input

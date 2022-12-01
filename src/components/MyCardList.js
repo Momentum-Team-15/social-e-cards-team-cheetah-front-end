@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { CardSnapshot } from './CardSnapshot'
 
 // TODO: Confirm endpoint
-export const MyCardList = (token, isLoggedIn) => {
+export const MyCardList = ({token}) => {
     const [cards, setCards] = useState([])
     const [selectedCardId, setSelectedCardId] = useState(null)
 
@@ -15,20 +15,22 @@ export const MyCardList = (token, isLoggedIn) => {
                 },
             })
             .then(res => {
-                setCards(res.cards)
+                setCards(res.data)
             })
     }, [token])
 
     return (
         
+        <>
+        <h1>My Cards</h1>
         <div className='card-shelf'>
             {cards.map(card => (
                 <section>
-                    <h2>Here are our currently available cards!</h2>
                     <CardSnapshot key={card.id} card={card}/>
                 </section>
                 ))
             }
         </div>
+        </>
             )
 }

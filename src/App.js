@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
 import { CardDetail } from './components/CardDetail'
 import { CardList } from './components/CardList'
+import { CreateCard } from './components/CreateCard'
 import { Header } from './components/Header'
 import { Login } from './components/Login'
 import { MyCardList } from './components/MyCardList'
@@ -12,7 +13,6 @@ import { NavBar } from './components/NavBar'
 import { Register } from './components/Register'
 import { TheirCardList } from './components/TheirCardList'
 
-// import { LoggedOutHeader } from './components/LoggedOutHeader'
 
 function App() {
     const [token, setToken] = useLocalStorageState('token', null)
@@ -33,20 +33,47 @@ function App() {
                             <Header setAuth={setAuth} />
                             <NavBar />
                             <Routes>
-                                <Route path="/" element={ <CardList token={token} isLoggedIn={isLoggedIn} /> } />
-                                <Route path="/register" exact element={ <Register /> } />
-                                <Route path="/card/:cardId" element={ <CardDetail /> } />
-                                <Route path="/friends" exact element={ <MyFriends token={token} isLoggedIn={isLoggedIn} /> } />
-                                <Route path="/cards/username" element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> } />
-                                <Route path="/mycards" element={ <MyCardList token={token} isLoggedIn={isLoggedIn} /> } />
-                                <Route path="/theircards" element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> } />
+                                <Route 
+                                    path="/" 
+                                    element={ <CardList token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/register" 
+                                    exact
+                                    element={ <Register /> }
+                                />
+                                <Route 
+                                    path="/card/:cardId"
+                                    exact 
+                                    element={ <CardDetail /> }
+                                />
+                                <Route 
+                                    path="/friends"
+                                    exact
+                                    element={ <MyFriends token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/cards/username"
+                                    exact
+                                    element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/mycards" 
+                                    exact
+                                    element={ <MyCardList token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/theircards"
+                                    exact
+                                    element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/create"
+                                    exact
+                                    element={ <CreateCard token={token} isLoggedIn={isLoggedIn} /> }
+                                />
                                 {/* <Route path="/cards/:user" element={ <LikedCardList token={token} isLoggedIn={isLoggedIn} /> } /> */}
-                                {/* how to set :user for mycards vs other users' cards */}
-                                {/* confirm endpoints then create additional components as necessary (should just be dups of the cardLlist component with props to complete endpoint) */}
                             </Routes>
-                        </div>
-                        <div>
-                            <CardList token={token} isLoggedIn={isLoggedIn} />
                         </div>
                     </>
                 ) : (
