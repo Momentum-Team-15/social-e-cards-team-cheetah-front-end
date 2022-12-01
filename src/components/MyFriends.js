@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 // TODO: Update endpoint for a list of all followed users (where their username will then link to a list of their cards)
 
-export const MyFriends = (token) => {
+export const MyFriends = ({token}) => {
     const [friends, setFriends] = useState([])
     const [selectedUserId, setSelectedUserId] = useState([])
 
@@ -17,7 +17,6 @@ export const MyFriends = (token) => {
             .then(res => {
                 setFriends(res.data)
             })
-            console.log(token)
     }, [token])
 
     return (

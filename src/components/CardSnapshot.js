@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom"
-
 export const CardSnapshot = ({ card }) => {
 
     return (
@@ -10,15 +7,13 @@ export const CardSnapshot = ({ card }) => {
                 className='card-snapshot'
                 style={{
                     background: card.background_color,
-                    border: `${card.border_style} ${card.border_color}`,textAlign: card.text_alignment
+                    border: `${card.border_style} ${card.border_color}`,textAlignment: card.text_alignment
 
                 }}
                 >
                 <div className='sm-card-front'>
-                    <p className='outerMessage' style={{ 
-                        color: card.font_color,
-                        background: card.background_color
-                    }}>
+                    <p className='outerMessage' 
+                        style={{ color: card.font_color, background: card.background_color}}>
                         {card.outer_msg}
                     </p>
                 </div>

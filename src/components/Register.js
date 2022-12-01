@@ -29,7 +29,6 @@ export const Register = () => {
             })    
     }
 
-
     return (
         <div>
             <div className='register-box'>

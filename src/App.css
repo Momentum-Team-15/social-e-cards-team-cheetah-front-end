@@ -1,5 +1,6 @@
+/* BELOW THIS LINE ARE MAIN/STANDARD/SITE ELEMENTS */
+
 body {
-    /* background: linear-gradient (#D97B73, #8E5849); */
     background-color: #d97b73;
 }
 
@@ -26,6 +27,7 @@ header {
     justify-content: space-between;
 }
 
+/* BOX CONTAINING LOGIN AND REGISTRATION */
 #home-box {
     padding: 0.5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -35,12 +37,7 @@ header {
     align-content: center;
 }
 
-.card-create {
-    padding: 0.5em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: white;
-}
-
+/* ACROSS COMPONENT ELEMENT DISPLAYS */
 .card-shelf {
     border: black solid 1px;
     margin: 5px;
@@ -48,8 +45,21 @@ header {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
-    
 }
+
+h4, .author {
+    margin: 5px;
+    background-color: wheat;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h2 {
+    font-size: .5em;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* BELOW ARE CARD SNAPSHOT (SMALL-FRAME) STYLES */
 
 .sm-card-frame {
     background: wheat;
@@ -74,18 +84,6 @@ header {
     transform: rotateY(-180deg);
 }
 
-h4, .author {
-    margin: 5px;
-    background-color: wheat;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-h2 {
-    font-size: .5em;
-    font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
 .sm-card-back {
     transform: rotateY(180deg);
     padding: 20% 0;
@@ -93,7 +91,7 @@ h2 {
 
 .sm-card-front {
     padding: 40% 0;
-
+    
 }
 .sm-card-front, .sm-card-back {
     border: 5px;
@@ -103,7 +101,40 @@ h2 {
     backface-visibility: hidden;
 }
 
-/* CSS */
+/* CREATE CARD FORM AND EDIT STYLING BELOW */
+
+.lg-card-frame {
+    background: wheat;
+    width: 300px;
+    height: 450px;
+    margin: 1em;
+    perspective: 300px;
+    box-shadow: 0 0 10px;
+    display: flex;
+}
+
+.card-detail {
+    width:90%;
+    height: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    transition: 1.5s; 
+    transform-style: preserve-3d;
+}
+
+.lg-card-frame:hover .card-snapshot {
+    transform: rotateY(-180deg);
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* route-LINK/BUTTON STYLES */
 .button-1 {
     /* background-color: rgb(195, 91, 91); */
     border: 2px grey groove;
@@ -136,7 +167,6 @@ h2 {
 .button-1:hover,
 .button-1:focus {
     background-color: rgb(195, 112, 93);
-    /* background-color: #86444a; */
     box-shadow: 2px 2px rgb(89, 64, 49);
     text-shadow: 2px 2px 4px rgb(89, 64, 93);
 }

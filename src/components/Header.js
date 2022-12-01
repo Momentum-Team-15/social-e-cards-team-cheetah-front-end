@@ -24,7 +24,7 @@ export const Header = ({ setAuth }) => {
                 className='button-1'
                 onClick={handleLogout}
             >Log Out</Link>
-            {/* <Link to="/create" path="" className='button-1'>Create a Card</Link> */}
+            <Link to="/create" path="" className='button-1'>Create a Card</Link>
             
         </header>
     )

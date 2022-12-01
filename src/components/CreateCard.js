@@ -1,58 +1,62 @@
-import './App.css'
 import { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 export const CreateCard = ({token}) => {
-    const [title, setTitle] = useState('title', '')
-    const [background, setBackground] = useState('background', 'white')
-    const [borderStyle, setBorderStyle] = useState('borderStyle', 'solid')
-    const [borderColor, setBorderColor] = useState('borderColor', 'black')
-    const [fontFamily, setFontFamily] = useState('fontFamily', '')
-    const [fontColor, setFontColor] = useState('fontColor', 'black')
-    const [textAlign, setTextAlign] = useState('textAlign', 'center')
-    const [outerMsg, setOuterMsg] = useState('outerMsg', 'Be funny, brave and kind.')
-    const [innerMsg, setInnerMsg] = useState('innerMsg', 'Write from the heart.')
-    const [updated, setUpdated] = useState('updated', '')
-    const [published, setPublished] = useState('published', false)
+    const [newCard, setNewCard] = useState([])
+    const [title, setTitle] = useState('')
+    const [background, setBackground] = useState('')
+    const [borderStyle, setBorderStyle] = useState('')
+    const [borderColor, setBorderColor] = useState('')
+    const [fontFamily, setFontFamily] = useState('')
+    const [fontColor, setFontColor] = useState('')
+    const [textAlignment, setTextAlignment] = useState('')
+    const [outerMsg, setOuterMsg] = useState('Be funny, brave and kind.')
+    const [innerMsg, setInnerMsg] = useState('Write from the heart.')
+    const [updated, setUpdated] = useState('')
+    const [published, setPublished] = useState(false)
 
     const [error, setError] = useState(null)
 
-    const handleSaveCard = () => {}
-    const handleToggleSide = () => {}
-
-    const handleSubmit = (e) => {
+    const handleCreate = (e) => {
         e.preventDefault()
         setError(null)
         axios
             .post('https://ecard-web-service.onrender.com/cards/user/',
                 {
-                    title: title,
-                    border_style: borderStyle,
-                    border_color: borderColor,
-                    background_color: background,
-                    font_family: fontFamily,
-                    font_color: fontColor,
-                    text_align: textAlign,
-                    outer_msg: outerMsg,
-                    inner_msg: innerMsg,
-                })
+                title: title,
+                border_style: borderStyle,
+                border_color: borderColor,
+                background_color: background,
+                font_family: fontFamily,
+                font_color: fontColor,
+                text_alignment: textAlignment,
+                outer_msg: outerMsg,
+                inner_msg: innerMsg,
+                },
+                {headers: {
+                    Authorization: `Token ${token}`
+                },
+                }
+            )
             .then((res) => {
+                setNewCard(res.data)
                 console.log(res.data)
             })
             .catch((error) => {
                 setError(error.message)
-            })
+            }, [token])
     }
-// TODO: Finish card form, figure out which method to use for dropdown options/and populating them
+
+    // const handleEdits = (token) => {}
+
     return (
-        <div>
-            <div className="card-frame"></div>
-            <div className="card-content">This is where your card will be. Someday.</div>
+        <div className="card-shelf">
             <div className='card-form'>
                 <h3>Craft a card.</h3>
                 {error && <div className="error">{error}</div>}
-                <form id="card-form" onSubmit={handleSubmit}>
+                <form id="card-form" onSubmit={handleCreate}>
                     <div className='field'>
                         <label htmlFor='title' className="label">Title</label>
                         <input
@@ -61,11 +65,19 @@ export const CreateCard = ({token}) => {
                             className='input'
                             type='text'
                             name='title'
-                            placeholder='Title' />
+                            placeholder='Title'
+                        />
                     </div>
-                    <div>
-                        <label htmlFor='background' className="label">Background</label>
+                    <div className='color-box'>
+                        <label htmlFor='background' className="label">Background Color</label>
                         <input
+                            id='background'
+                            onChange={(e) => {setBackground(e.target.value)}}
+                            className='input'
+                            type='color'
+                            name='background'
+                            placeholder='Background Color'
+                        />
                     </div>
                     <div className='field'>
                         <label htmlFor='outerMsg' className="label">Greeting</label>
@@ -75,7 +87,8 @@ export const CreateCard = ({token}) => {
                             className='input'
                             type='text'
                             name='outerMsg'
-                            placeholder='Greeting' />
+                            placeholder='Greeting'
+                        />
                     </div>
                     <div className='field'>
                         <label htmlFor='innerMsg' className="label">Message</label>
@@ -85,18 +98,19 @@ export const CreateCard = ({token}) => {
                             className='input'
                             type='text'
                             name='innerMsg'
-                            placeholder='Message' />
+                            placeholder='Message'
+                        />
                     </div>
                     <div className='field'>
                     </div>
                     <div className='control'>
-                        <button
-                            className='button'
-                        >Save Card</button>
+                        <input 
+                            to="/create" 
+                            className='button-1'
+                        >Create Card</button>
                     </div>
                 </form>
             </div>
         </div>
     )
-
 }
