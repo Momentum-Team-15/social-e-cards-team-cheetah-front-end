@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 export const CardDetail = ({ token, setSelected }) => {
     const [card, setCard] = useState({})
     const { cardId } = useParams()
+    const {isPublished, setIsPublished} = useState(card.published)
 
     useEffect(() => {
         axios
@@ -16,27 +17,39 @@ export const CardDetail = ({ token, setSelected }) => {
             .then(res => {
                 setCard(res.card)
             })
-    }, [token])
+    }, [token, {cardId}])
 
     return (
         <article className='lg-card-frame'>
+            <h4 className="card-title">{card.title}</h4>
             <div
                 className='card-detail'
                 style={{
-                    background_color: card.background_color,
+                    background: card.background_color,
                     border: `${card.border_width} ${card.border_color} ${card.border_style}`,
+                    textAlignment: card.textAlignment,
+                    fontColor: card.fontColor,
+                    fontFamily: card.fontFamily,
                 }}
             >
                 <div className='lg-card-front'>
-                    <h2 className='outerMessage' style={{ color: card.font_color }}>
+                    <div className='outerMessage'>
                         {card.outer_msg}
-                    </h2>
+                    </div>
                 </div>
                 <div className='lg-card-back'>
-                    <h2 className='innerMessage' style={{ color: card.font_color }}>
-                        {card.inner_msg}
-                    </h2>
+                    <h2 className='innerMessage'>{card.inner_msg}</h2>
                 </div>
+            </div>
+            <div className="deets">
+                <div className="author">{`by ${card.user}`}</div>
+                <p className="pub">
+                    {isPublished ? (
+                        <p>Published</p>
+                    ) : (
+                        <p>Unpublished</p>
+                    )}
+                </p>
             </div>
         </article>
     )

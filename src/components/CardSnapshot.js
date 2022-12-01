@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from "react-router-dom"
 
 export const CardSnapshot = ({ card }) => {
+    const [isPublished, setIsPublished] = useState(card.published)
 
     return (
         <article className='sm-card-frame'>
@@ -10,25 +10,30 @@ export const CardSnapshot = ({ card }) => {
                 className='card-snapshot'
                 style={{
                     background: card.background_color,
-                    border: `${card.border_style} ${card.border_color}`,textAlign: card.text_alignment
-
+                    border: `${card.border_style} ${card.border_color}`,textAlignment: card.text_alignment,
+                    fontColor: card.font_color,
+                    fontFamily: card.font_family
                 }}
                 >
                 <div className='sm-card-front'>
-                    <p className='outerMessage' style={{ 
-                        color: card.font_color,
-                        background: card.background_color
-                    }}>
-                        {card.outer_msg}
-                    </p>
+                    <div className='outerMessage'>{card.outer_msg}</div>
                 </div>
                 <div className='sm-card-back'>
-                    <p className='innerMessage' style={{ color: card.font_color }}>
+                    <div className='innerMessage'>
                         {card.inner_msg}
-                    </p>
+                    </div>
                 </div>
             </div>
-            <div className="author">{`by ${card.user}`}</div>
+            <div className="deets">
+                <div className="author">{`by ${card.user}`}</div>
+                <p className="pub">
+                    {isPublished ? (
+                        <p>Published</p>
+                    ) : (
+                        <p>Unpublished</p>
+                    )}
+                </p>
+            </div>
         </article>
     )
 }

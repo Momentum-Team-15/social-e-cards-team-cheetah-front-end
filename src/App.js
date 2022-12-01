@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
 import { CardDetail } from './components/CardDetail'
 import { CardList } from './components/CardList'
-// import { CreateCard } from './components/CreateCard'
+import { CreateCard } from './components/CreateCard'
 import { Header } from './components/Header'
 import { Login } from './components/Login'
 import { MyCardList } from './components/MyCardList'
@@ -43,7 +43,8 @@ function App() {
                                     element={ <Register /> }
                                 />
                                 <Route 
-                                    path="/card/:cardId" 
+                                    path="/card/:cardId"
+                                    exact 
                                     element={ <CardDetail /> }
                                 />
                                 <Route 
@@ -52,20 +53,25 @@ function App() {
                                     element={ <MyFriends token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
-                                    path="/cards/username" element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> }
+                                    path="/cards/username"
+                                    exact
+                                    element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/mycards" 
+                                    exact
                                     element={ <MyCardList token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
-                                    path="/theircards" 
+                                    path="/theircards"
+                                    exact
                                     element={ <TheirCardList token={token} isLoggedIn={isLoggedIn} /> }
                                 />
-                                {/* <Route 
-                                    path="/create" 
+                                <Route 
+                                    path="/create"
+                                    exact
                                     element={ <CreateCard token={token} isLoggedIn={isLoggedIn} /> }
-                                /> */}
+                                />
                                 {/* <Route path="/cards/:user" element={ <LikedCardList token={token} isLoggedIn={isLoggedIn} /> } /> */}
                             </Routes>
                         </div>
