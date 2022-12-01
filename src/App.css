@@ -63,6 +63,12 @@ h4 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+h1 {
+    margin: 5px;
+    padding-top: 1em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 h2 {
     font-size: .5em;
     font-weight: bold;
@@ -77,6 +83,13 @@ fieldset {
     margin: 1em;
     padding: 1em;
     font-size: smaller;
+}
+
+.friend-shelf {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 2em;
+    display: flex;
+    flex-flow: column wrap;
 }
 
 /* BELOW ARE CARD SNAPSHOT (SMALL-FRAME) STYLES */

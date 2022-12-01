@@ -21,7 +21,7 @@ export const MyFriends = ({token}) => {
 
     return (
         <div className='friend-shelf'>
-            <h2>My Friends</h2>
+            <h1>My Friends</h1>
             {friends.map(friend => (
                 <div className='friends-list'>
                     <p key="friend" className='friend'>{friend.friend}</p>
