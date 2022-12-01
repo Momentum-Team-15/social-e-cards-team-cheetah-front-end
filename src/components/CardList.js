@@ -19,6 +19,8 @@ export const CardList = ({token, isLoggedIn}) => {
     }, [token])
 
     return (
+        <>
+        <h3>Choices abound...</h3>
         <div className='card-shelf'>
             {cards.map(card => (
                 <section>
@@ -27,5 +29,6 @@ export const CardList = ({token, isLoggedIn}) => {
                 ))
             }
         </div>
-            )
+        </>
+    )
 }
