@@ -55,7 +55,7 @@ export const CreateCard = ({token}) => {
 
     return (
         <>
-        <h3>Craft a card.</h3>
+        <h1>Craft a card.</h1>
         <div className="card-shelf">
             <div className='create-box'>
                 {error && <div className="error">{error}</div>}
@@ -104,9 +104,20 @@ export const CreateCard = ({token}) => {
                             id='borderStyle'
                             onChange={(e) => setBorderStyle(e.target.value)}
                             className='input'
-                            type='radio'
+                            type='text'
                             name='title'
                             placeholder='Title'
+                            list="fontFamily"/>
+                            <datalist id="fontFamily">
+                                <option value="Dasged">Dashed</option>
+                                <option value="Double">Double</option>
+                                <option value="Groove">Groove</option>
+                                <option value="Ridge">Ridge</option>
+                                <option value="Inset">Inset</option>
+                                <option value="Outset">Outset</option>
+                                <option value="Solid">Solid</option>
+                                <option value="Dotted">Dotted</option>
+                            </datalist>
                         />
                     </div>
                     <div className='color-field'>
@@ -202,6 +213,7 @@ export const CreateCard = ({token}) => {
                     <h4 className="card-title">{title}</h4>
                     <div
                         className='card-detail'
+                        onClick={!{isFront}}
                         style={{
                             background: {background},
                             border: `${borderColor} ${borderStyle} ${borderWidth}`,
@@ -210,12 +222,16 @@ export const CreateCard = ({token}) => {
                             fontFamily: {fontFamily},
                         }}
                     >
-                    <div className='lg-card-front'>
-                        <div className='outerMessage'>{outerMsg}</div>
-                    </div>
-                    <div className='lg-card-back'>
-                        <div className='innerMessage' style={{ color: fontColor }}>{innerMsg}</div>
-                    </div>
+                        <div className="other-side">
+                            { isFront ? (
+                            <div className='lg-card-front'>
+                                <div className='outerMessage'>{outerMsg}</div>
+                            </div>
+                            ) : (
+                            <div className='lg-card-back'>
+                                <div className='innerMessage' style={{ color: fontColor }}>{innerMsg}</div>
+                            </div>
+                            )}
                     </div>
                     <div className="deets">
                         <div className="pub">
@@ -226,7 +242,7 @@ export const CreateCard = ({token}) => {
                             )}
                         </div>
                     </div>
-                </article>
+               </div> </article>
             </div>
         </div>
         </>
