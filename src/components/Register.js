@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export const Register = () => {
+export const Register = ({setAuth}) => {
     const [username, setUsername] = useState ('')
     const [email, setEmail] = useState ('')
     const [password, setPassword] = useState ('')
@@ -16,14 +16,16 @@ export const Register = () => {
                 {
                     username, email, password
                 })
-                .then((res) => {
-                    console.log(res.data)
-                })
-                .then(axios
-                    .post('https://ecard-web-service.onrender.com/auth/token/login/',
-                        {
-                            username, password
-                        }))
+            .then((res) => {
+                console.log(res.data)
+            })
+            .then(() => axios
+                .post('https://ecard-web-service.onrender.com/auth/token/login/',
+                    {
+                        username, password
+                    }))
+            .then((res) => setAuth(username, res.data.auth_token))
+                
             .catch((error) => {
                 setError(error.message)
             })    

@@ -20,7 +20,7 @@ export const CardList = ({token, isLoggedIn}) => {
 
     return (
         <>
-        <h3>Choices abound...</h3>
+        <h1>Choices abound...</h1>
         <div className='card-shelf'>
             {cards.map(card => (
                 <section>
