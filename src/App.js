@@ -40,7 +40,7 @@ function App() {
                                 <Route 
                                     path="/register" 
                                     exact
-                                    element={ <Register /> }
+                                    element={ <Register setAuth={setAuth} /> }
                                 />
                                 <Route 
                                     path="/card/:cardId"
