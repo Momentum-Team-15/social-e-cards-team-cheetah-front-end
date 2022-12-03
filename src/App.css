@@ -30,6 +30,38 @@ header {
     justify-content: space-between;
 }
 
+/* FORM TAGS AND ATTRIBUTES SPECIFIC STYLES */
+
+fieldset {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 1em;
+    padding: 1em;
+    font-size: smaller;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 2em;
+}
+
+textarea {
+    margin-right: 1em;
+}
+
+input[type=text], input[type=password] {
+    width: 75%;
+    padding: 0.1em 1em;
+    margin-bottom: .5em;
+    margin-right: 1em;
+}
+
+input[type=color], select {
+    margin-bottom: .5em;
+    margin-right: 1em;
+}
+
+
 /* BOX CONTAINING LOGIN AND REGISTRATION */
 #home-box {
     padding: 0.5em;
@@ -47,6 +79,13 @@ header {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
+}
+
+.create-shelf {
+    margin: 5px;
+    padding: 0.5em;
+    display: flex;
+    flex-flow: wrap;
 }
 
 h4 {
@@ -74,23 +113,50 @@ h2 {
     font-weight: bold;
 }
 
-input {
-    margin: 0.5em;
-}
-
-fieldset {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin: 1em;
-    padding: 1em;
-    font-size: smaller;
-}
-
 .friend-shelf {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding-left: 2em;
     display: flex;
     flex-flow: column wrap;
 }
+
+.author {
+    margin-bottom: .5em;
+}
+
+.deets {
+    cursor: default;
+}
+
+.pub {
+    cursor: pointer;    
+    background-color: green;
+    color: white;
+    width: min-content;
+    padding: 0.1em 1em;
+    border-radius: 5em;
+    margin: 0.1em;
+}
+
+.unpub {
+cursor: pointer;
+background-color: orange;
+color: black;
+width: min-content;
+padding: 0.1em 1em;
+border-radius: 5em;     
+margin: 0.1em;
+}
+
+.nopub {
+    width: min-content;
+    padding: 0.1em 1em;
+    border-radius: 5em;
+    margin: 0.1em;}
+    cursor: pointer;
+        
+
+
 
 /* BELOW ARE CARD SNAPSHOT (SMALL-FRAME) STYLES */
 
@@ -152,6 +218,7 @@ fieldset {
     flex-direction: column;
     transition: 1.5s; 
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .lg-card-frame:hover .card-snapshot {
@@ -163,6 +230,10 @@ fieldset {
     padding: 20% 0;
 }
 
+.inner-msg, .outer-msg {
+    white-space: pre-wrap;
+
+}
 .lg-card-front {
     padding: 40% 0;
     
