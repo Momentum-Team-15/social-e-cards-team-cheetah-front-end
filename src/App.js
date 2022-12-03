@@ -17,7 +17,7 @@ import { TheirCardList } from './components/TheirCardList'
 function App() {
     const [token, setToken] = useLocalStorageState('token', null)
     const [username, setUsername] = useLocalStorageState('username', '')
-    
+    console.log(username)
     const setAuth = (username, token) => {
         setToken(token)
         setUsername(username)
@@ -45,7 +45,7 @@ function App() {
                                 <Route 
                                     path="/card/:cardId"
                                     exact 
-                                    element={ <CardDetail /> }
+                                    element={ <CardDetail token={token} isLoggedIn={isLoggedIn}/> }
                                 />
                                 <Route 
                                     path="/friends"

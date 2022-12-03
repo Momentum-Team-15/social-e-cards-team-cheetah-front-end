@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { CardDetail } from './CardDetail'
 
 
 export const CreateCard = ({token}) => {
     const [newCard, setNewCard] = useState([])
     const [isFront, setIsFront] = useState(true)
+    const [cardId, setCardId] = useState('')
     const [title, setTitle] = useState('Earn your title.')
     const [background, setBackground] = useState('white')
     const [borderStyle, setBorderStyle] = useState('solid')
@@ -27,6 +29,7 @@ export const CreateCard = ({token}) => {
         axios
             .post('https://ecard-web-service.onrender.com/cards/user/',
                 {
+                id: cardId,
                 title: title,
                 border_style: borderStyle,
                 border_color: borderColor,
@@ -51,16 +54,26 @@ export const CreateCard = ({token}) => {
             }, [token])
     }
 
+    const handleCardFlip = (e) => {
+        e.preventDefault()
+        setIsFront(!isFront)
+    }
+
+    const handlePublish = (e) => {
+        e.preventDefault()
+        setIsPublished(!isPublished)
+    }
+
+
     // const handleEdits = (token) => {}
 
     return (
         <>
-        <h1>Craft a card.</h1>
-        <div className="card-shelf">
+        <h1>Card Creation</h1>
+        <div className="create-shelf">
             <div className='create-box'>
                 {error && <div className="error">{error}</div>}
                 <form id="card-form" onSubmit={handleCreate}>
-            {/* onChange with a updateView? to show styling changes along with updates? */}
                     <fieldset><legend>Name that Card</legend>
                     <div className='field'>
                         <label htmlFor='title' className="label"></label>
@@ -68,10 +81,15 @@ export const CreateCard = ({token}) => {
                             id='title'
                             onChange={(e) => setTitle(e.target.value)}
                             className='input'
+                            autoComplete='off'
+                            autoFocus
                             type='text'
                             name='title'
-                            placeholder='Card Name'
+                            placeholder='Earn your title.'
                         />
+                        <p>Card will refresh as you edit your selections.</p>
+                        <p>Creating your card will save it in a draft state and only visible to you.</p>
+
                     </div>
                     </fieldset>
                     <fieldset><legend>Style that card</legend>
@@ -82,6 +100,7 @@ export const CreateCard = ({token}) => {
                             onChange={(e) => {setBackground(e.target.value)}}
                             className='input'
                             type='color'
+                            autoComplete='off'
                             name='background'
                             placeholder=''/>
                     </div>
@@ -93,32 +112,28 @@ export const CreateCard = ({token}) => {
                             className='slider'
                             type='number'
                             name='borderWidth'
-                            placeholder='Title'
+                            placeholder={`${borderWidth}`}
                             min="1"
                             max="10"
-                        />
+                            width="100px"/>px
                     </div>
                     <div className='field-border'>
                         <label htmlFor='borderStyle' className="label">Border Style</label>
-                        <input
-                            id='borderStyle'
+                        <select
+                            id="borderStyle"
+                            name='borderStyle'
                             onChange={(e) => setBorderStyle(e.target.value)}
-                            className='input'
-                            type='text'
-                            name='title'
-                            placeholder='Title'
-                            list="fontFamily"/>
-                            <datalist id="fontFamily">
-                                <option value="Dasged">Dashed</option>
-                                <option value="Double">Double</option>
-                                <option value="Groove">Groove</option>
-                                <option value="Ridge">Ridge</option>
-                                <option value="Inset">Inset</option>
-                                <option value="Outset">Outset</option>
-                                <option value="Solid">Solid</option>
-                                <option value="Dotted">Dotted</option>
-                            </datalist>
-                        />
+                            className='select-box'
+                            >
+                            <option value="Dashed">Dashed</option>
+                            <option value="Double">Double</option>
+                            <option value="Groove">Groove</option>
+                            <option value="Ridge">Ridge</option>
+                            <option value="Inset">Inset</option>
+                            <option value="Outset">Outset</option>
+                            <option value="Solid">Solid</option>
+                            <option value="Dotted">Dotted</option>
+                        </select>
                     </div>
                     <div className='color-field'>
                         <label htmlFor='borderColor' className="label">Border Color</label>
@@ -133,60 +148,59 @@ export const CreateCard = ({token}) => {
                     </fieldset>
                     <fieldset><legend>Verbal Excursions</legend>
                     <div className='field'>
-                        <label htmlFor='outerMsg' className="label">Initial Greetingse</label>
-                        <input
+                        <label htmlFor='outerMsg' className="label">Initial Greetings</label>
+                        <textarea
                             id='outerMsg'
                             onChange={(e) => setOuterMsg(e.target.value)}
                             className='input'
                             type='text'
+                            autoComplete='off'
                             maxLength={200}
                             name='outerMsg'
-                            placeholder='be nice here'
+                            placeholder="Be funny, brave and kind."
                         />
                     </div>
                     <div className='field'>
                         <label htmlFor='innerMsg' className="label">Flip-Side Message</label>
-                        <input
+                        <textarea
                             id='innerMsg'
                             onChange={(e) => setInnerMsg(e.target.value)}
                             className='input'
                             type='text'
+                            autoComplete='off'
                             maxLength={200}
                             name='innerMsg'
-                            placeholder='be funny here'
+                            placeholder='Make yourelf laugh, like, a LOT.'
                         />
                     </div>
                     <div className='field'>
                         <label htmlFor='fontFamily' className="label">Font</label>
-                        <input
+                        <select
                             id='fontFamily'
                             onChange={(e) => setFontFamily(e.target.value)}
-                            className='input'
-                            type='text'
-                            name='innerMsg'
-                            placeholder='Fetch a Font'
-                            list="fontFamily"/>
-                            <datalist id="fontFamily">
-                                <option value="Arial">Arial</option>
-                                <option value="Verdana">Verdana</option>
-                                <option value="Times">Times</option>
-                                <option value="Courier">Courier</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Trebuchet">Trebuchet</option>
-                                <option value="Verdana">Verdana</option>
-                            </datalist>
+                            className='select-box'
+                            name='fontFamily'
+                            list="fontFamily">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Times">Times</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Trebuchet">Trebuchet</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
                     </div>
                     <div className='field'>
                         <label htmlFor='textAlignment' className="label">Position Text</label>
-                        <input 
-                            list="textAlignment" 
-                            name="textAlignment"
-                            placeholder="Where to put it?"></input>
-                            <datalist id="textAlignment">
-                                <option value="left"></option>
-                                <option value="center"></option>
-                                <option value="right"></option>
-                            </datalist>
+                        <select 
+                            id="textAlignment"
+                            onChange={(e) => setTextAlignment(e.target.value)}
+                            className="select-box"
+                            name="textAlignment">
+                            <option value="left">left</option>
+                            <option value="center">center</option>
+                            <option value="right">right</option>
+                        </select>
                     </div>    
                     <div className='color-field'>
                         <label htmlFor='fontColor' className="label">Font Color</label>
@@ -213,36 +227,37 @@ export const CreateCard = ({token}) => {
                     <h4 className="card-title">{title}</h4>
                     <div
                         className='card-detail'
-                        onClick={!{isFront}}
+                        onClick={handleCardFlip}
                         style={{
-                            background: {background},
+                            background: background,
                             border: `${borderColor} ${borderStyle} ${borderWidth}`,
-                            textAlignment: {textAlignment},
-                            color: {fontColor},
-                            fontFamily: {fontFamily},
+                            textAlignment: textAlignment,
+                            color: fontColor,
+                            fontFamily: fontFamily,
                         }}
                     >
-                        <div className="other-side">
+                        <>
                             { isFront ? (
-                            <div className='lg-card-front'>
-                                <div className='outerMessage'>{outerMsg}</div>
-                            </div>
+                                <div className='lg-card-front'>
+                                    <div className='outerMessage'>{outerMsg}</div>
+                                </div>
                             ) : (
-                            <div className='lg-card-back'>
-                                <div className='innerMessage' style={{ color: fontColor }}>{innerMsg}</div>
-                            </div>
+                                <div className='lg-card-back'>
+                                    <div className='innerMessage'>{innerMsg}</div>
+                                </div>
                             )}
+                        </>
                     </div>
-                    <div className="deets">
-                        <div className="pub">
-                            {isPublished ? (
-                                <p>Published</p>
+                    <div className='deets'>
+                        <div className="ispub" onClick={handlePublish}>
+                            { isPublished ? (
+                                <p className='pub'>Published</p>
                             ) : (
-                                <p>Unpublished</p>
+                                <p className='unpub'>Unpublished</p>
                             )}
                         </div>
                     </div>
-               </div> </article>
+                </article>
             </div>
         </div>
         </>
