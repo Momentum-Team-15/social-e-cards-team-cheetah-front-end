@@ -9,15 +9,15 @@ export const CreateCard = ({token}) => {
     const [isFront, setIsFront] = useState(true)
     const [cardId, setCardId] = useState('')
     const [title, setTitle] = useState('Earn your title.')
-    const [background, setBackground] = useState('white')
+    const [background, setBackground] = useState('#FBA85B')
     const [borderStyle, setBorderStyle] = useState('solid')
     const [borderWidth, setBorderWidth] = useState('5px')
-    const [borderColor, setBorderColor] = useState('grey')
+    const [borderColor, setBorderColor] = useState('#000000')
     const [fontFamily, setFontFamily] = useState('serif')
-    const [fontColor, setFontColor] = useState('darkblue')
-    const [textAlignment, setTextAlignment] = useState('center')
+    const [fontColor, setFontColor] = useState('#2c3268')
+    const [textAlign, setTextAlign] = useState('center')
     const [outerMsg, setOuterMsg] = useState('Be funny, brave and kind.')
-    const [innerMsg, setInnerMsg] = useState('Write from the heart.')
+    const [innerMsg, setInnerMsg] = useState('Make yourself laugh, like, a LOT.')
     const [updated, setUpdated] = useState('')
     const [isPublished, setIsPublished] = useState(false)
 
@@ -36,7 +36,7 @@ export const CreateCard = ({token}) => {
                 background_color: background,
                 font_family: fontFamily,
                 font_color: fontColor,
-                text_alignment: textAlignment,
+                text_align: textAlign,
                 outer_msg: outerMsg,
                 inner_msg: innerMsg,
                 },
@@ -108,7 +108,7 @@ export const CreateCard = ({token}) => {
                         <label htmlFor='borderWidth' className="label">Border Width</label>
                         <input
                             id='borderWidth'
-                            onChange={(e) => `${setBorderWidth} px`(e.target.value)}
+                            onChange={(e) => `${setBorderWidth}px`(e.target.value)}
                             className='slider'
                             type='number'
                             name='borderWidth'
@@ -191,12 +191,12 @@ export const CreateCard = ({token}) => {
                         </select>
                     </div>
                     <div className='field'>
-                        <label htmlFor='textAlignment' className="label">Position Text</label>
+                        <label htmlFor='textAlign' className="label">Position Text</label>
                         <select 
-                            id="textAlignment"
-                            onChange={(e) => setTextAlignment(e.target.value)}
+                            id="textAlign"
+                            onChange={(e) => setTextAlign(e.target.value)}
                             className="select-box"
-                            name="textAlignment">
+                            name="textAlign">
                             <option value="left">left</option>
                             <option value="center">center</option>
                             <option value="right">right</option>
@@ -231,7 +231,7 @@ export const CreateCard = ({token}) => {
                         style={{
                             background: background,
                             border: `${borderColor} ${borderStyle} ${borderWidth}`,
-                            textAlignment: textAlignment,
+                            textAlign: textAlign,
                             color: fontColor,
                             fontFamily: fontFamily,
                         }}
