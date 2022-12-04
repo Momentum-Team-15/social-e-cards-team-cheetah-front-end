@@ -8,10 +8,10 @@ export const CreateCard = ({token}) => {
     const [newCard, setNewCard] = useState([])
     const [isFront, setIsFront] = useState(true)
     const [cardId, setCardId] = useState('')
-    const [title, setTitle] = useState('Earn your title.')
+    const [title, setTitle] = useState('a sample card for you')
     const [background, setBackground] = useState('#FBA85B')
     const [borderStyle, setBorderStyle] = useState('solid')
-    const [borderWidth, setBorderWidth] = useState('5px')
+    // const [borderWidth, setBorderWidth] = useState('5px')
     const [borderColor, setBorderColor] = useState('#000000')
     const [fontFamily, setFontFamily] = useState('serif')
     const [fontColor, setFontColor] = useState('#2c3268')
@@ -48,6 +48,7 @@ export const CreateCard = ({token}) => {
             .then((res) => {
                 setNewCard(res.data)
                 console.log(res.data)
+
             })
             .catch((error) => {
                 setError(error.message)
@@ -62,6 +63,7 @@ export const CreateCard = ({token}) => {
     const handlePublish = (e) => {
         e.preventDefault()
         setIsPublished(!isPublished)
+        return "Your card has been published."
     }
 
 
@@ -85,7 +87,7 @@ export const CreateCard = ({token}) => {
                             autoFocus
                             type='text'
                             name='title'
-                            placeholder='Earn your title.'
+                            placeholder="a sample card for you"
                         />
                         <p>Card will refresh as you edit your selections.</p>
                         <p>Creating your card will save it in a draft state and only visible to you.</p>
@@ -102,9 +104,10 @@ export const CreateCard = ({token}) => {
                             type='color'
                             autoComplete='off'
                             name='background'
+                            value='#FBA85B'
                             placeholder=''/>
                     </div>
-                    <div className='field-border'>
+                    {/* <div className='field-border'>
                         <label htmlFor='borderWidth' className="label">Border Width</label>
                         <input
                             id='borderWidth'
@@ -112,11 +115,11 @@ export const CreateCard = ({token}) => {
                             className='slider'
                             type='number'
                             name='borderWidth'
-                            placeholder={`${borderWidth}`}
+                            placeholder={borderWidth}
                             min="1"
                             max="10"
-                            width="100px"/>px
-                    </div>
+                            />px
+                    </div> */}
                     <div className='field-border'>
                         <label htmlFor='borderStyle' className="label">Border Style</label>
                         <select
@@ -124,15 +127,16 @@ export const CreateCard = ({token}) => {
                             name='borderStyle'
                             onChange={(e) => setBorderStyle(e.target.value)}
                             className='select-box'
+                            value='Solid'
                             >
                             <option value="Dashed">Dashed</option>
+                            <option value="Dotted">Dotted</option>
                             <option value="Double">Double</option>
                             <option value="Groove">Groove</option>
-                            <option value="Ridge">Ridge</option>
                             <option value="Inset">Inset</option>
                             <option value="Outset">Outset</option>
+                            <option value="Ridge">Ridge</option>
                             <option value="Solid">Solid</option>
-                            <option value="Dotted">Dotted</option>
                         </select>
                     </div>
                     <div className='color-field'>
@@ -143,6 +147,7 @@ export const CreateCard = ({token}) => {
                             className='input'
                             type='color'
                             name='borderColor'
+                            value='#000000'
                             placeholder=''/>
                     </div>
                     </fieldset>
@@ -180,6 +185,7 @@ export const CreateCard = ({token}) => {
                             onChange={(e) => setFontFamily(e.target.value)}
                             className='select-box'
                             name='fontFamily'
+                            value='Times'
                             list="fontFamily">
                             <option value="Arial">Arial</option>
                             <option value="Verdana">Verdana</option>
@@ -205,11 +211,12 @@ export const CreateCard = ({token}) => {
                     <div className='color-field'>
                         <label htmlFor='fontColor' className="label">Font Color</label>
                         <input
-                            id='borderColor'
+                            id='fontColor'
                             onChange={(e) => {setFontColor(e.target.value)}}
                             className='input'
                             type='color'
                             name='fontColor'
+                            value='#2c3268'
                             placeholder=''/>
                     </div>
                     </fieldset>
@@ -230,7 +237,7 @@ export const CreateCard = ({token}) => {
                         onClick={handleCardFlip}
                         style={{
                             background: background,
-                            border: `${borderColor} ${borderStyle} ${borderWidth}`,
+                            border: `5px ${borderColor} ${borderStyle}`,
                             textAlign: textAlign,
                             color: fontColor,
                             fontFamily: fontFamily,
