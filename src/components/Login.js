@@ -44,6 +44,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             onChange={(e) => setUsername(e.target.value)}
                             className='input'
                             autoComplete='off'
+                            autoFocus
                             type='text'
                             name='My Username'
                             placeholder='My Username' />
